@@ -8,18 +8,34 @@
 </head>
 <body>
     <header>
-        <h1>CareTrack</h1>
-        <button class="gout-button" id="goutButton">Gout</button>
-        <nav>
-            <ul>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#medications">Medications</a></li>
-                <li><a href="#caregivers">Caregivers</a></li>
-                <li><a href="#settings">Settings</a></li>
-            </ul>
-        </nav>
+        <div class="app-title">
+           <h1>CareTrack</h1>
+           <p>Father's Medication Dashboard</p>
+        </div>
+    <div class="gout-toggle-wrapper">
+      <span class="gout-label">Gout Attack Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="goutToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
     </header>
     <main>
+        <div class="date-header">
+            <span id="currentDate">📅 Today's Schedule</span>
+            <button class="btn-add" id="addMedBtn">+ Add Med</button>
+        </div>
+
+    <!-- Medication Cards Container -->
+        <div id="medicationList" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamically injected via script -->
+        </div>
     </main>
+    <nav>
+        <a href="#" class="nav-item active"><span>🏠</span><span>Dashboard</span></a>
+        <a href="#" class="nav-item"><span>💊</span><span>Medications</span></a>
+        <a href="#" class="nav-item"><span>📈</span><span>Health Log</span></a>
+    </nav>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareTrack - Medication & Caregiver Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareTrack — Medication & Caregiver Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="app-title">
-           <h1>CareTrack</h1>
-           <p>Father's Medication Dashboard</p>
-        </div>
+
+  <header>
+    <div class="app-title">
+      <h1>CareTrack</h1>
+      <p>Father's Medication Dashboard</p>
+    </div>
     <div class="gout-toggle-wrapper">
       <span class="gout-label">Gout Attack Mode</span>
       <label class="switch">
@@ -19,23 +20,88 @@
         <span class="slider"></span>
       </label>
     </div>
-    </header>
-    <main>
-        <div class="date-header">
-            <span id="currentDate">📅 Today's Schedule</span>
-            <button class="btn-add" id="addMedBtn">+ Add Med</button>
-        </div>
+  </header>
 
-    <!-- Medication Cards Container -->
-        <div id="medicationList" style="display: flex; flex-direction: column; gap: 1rem;">
-        <!-- Dynamically injected via script -->
+  <main>
+
+    <div class="date-header">
+      <span id="currentDate">📅 Today's Schedule</span>
+      <button class="btn-add" id="addMedBtn">+ Add Med</button>
+    </div>
+
+    <!-- medication cards — JS fills this -->
+    <div id="medicationList" class="medication-list"></div>
+
+  </main>
+
+  <!-- add/edit modal — hidden by default -->
+  <div class="modal hidden" id="medModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add Medication</h2>
+        <button class="btn-close" id="closeModal">✕</button>
+      </div>
+      <form id="medForm">
+        <div class="form-group">
+          <label for="medName">Medication Name</label>
+          <input type="text" id="medName" 
+                 placeholder="e.g. APO-CLOPIDOGREL 75mg" required>
         </div>
-    </main>
-    <nav>
-        <a href="#" class="nav-item active"><span>🏠</span><span>Dashboard</span></a>
-        <a href="#" class="nav-item"><span>💊</span><span>Medications</span></a>
-        <a href="#" class="nav-item"><span>📈</span><span>Health Log</span></a>
-    </nav>
-    <script src="script.js"></script>
+        <div class="form-group">
+          <label>Times</label>
+          <div id="timesContainer">
+            <input type="time" class="time-input">
+          </div>
+          <button type="button" class="btn-add-time" id="addTimeBtn">
+            + Add Another Time
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="medNotes">Notes</label>
+          <input type="text" id="medNotes" 
+                 placeholder="e.g. Take after meal">
+        </div>
+        <div class="form-group">
+          <label for="medQuantity">Quantity (tablets)</label>
+          <input type="number" id="medQuantity" min="1" value="30">
+        </div>
+        <div class="form-group toggle-group">
+          <label for="medGoutOnly">Gout medication only</label>
+          <label class="switch">
+            <input type="checkbox" id="medGoutOnly">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="cancelModal">
+            Cancel
+          </button>
+          <button type="submit" class="btn-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- notification permission banner -->
+  <div class="notification-banner hidden" id="notifBanner">
+    <p>Enable notifications for medication reminders</p>
+    <button id="enableNotif">Enable</button>
+    <button id="dismissNotif">✕</button>
+  </div>
+
+  <!-- bottom navigation -->
+  <nav class="bottom-nav">
+    <a href="#" class="nav-item active" data-page="dashboard">
+      <span>🏠</span><span>Dashboard</span>
+    </a>
+    <a href="#" class="nav-item" data-page="medications">
+      <span>💊</span><span>Medications</span>
+    </a>
+    <a href="#" class="nav-item" data-page="health">
+      <span>📈</span><span>Health Log</span>
+    </a>
+  </nav>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+/* your job — fill in the ??? */
+
+/* ─── Google Fonts ───────────────────────────── */
+/* use Inter or Plus Jakarta Sans — clean medical feel */
+@import url('???');
+
+/* ─── Variables ──────────────────────────────── */
+:root {
+  /* Light mode — gradient light green to white */
+  --bg-primary:    ???; /* white */
+  --bg-secondary:  ???; /* very light green */
+  --bg-card:       ???; /* white card */
+  --accent-green:  ???; /* main green — buttons, highlights */
+  --accent-urgent: ???; /* orange/red — upcoming reminder */
+  --text-primary:  ???; /* dark text */
+  --text-secondary:???; /* grey text */
+  --text-muted:    ???; /* very light grey */
+  --border:        ???; /* subtle border */
+  --shadow:        0 2px 8px rgba(0,0,0,0.08);
+
+  /* Font */
+  --font-family: '???', sans-serif;
+  --font-size-base: 16px;
+}
+
+/* Dark mode — gradient dark green to black */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary:    ???; /* near black */
+    --bg-secondary:  ???; /* dark green */
+    --bg-card:       ???; /* dark card */
+    --text-primary:  ???; /* white */
+    --text-secondary:???; /* light grey */
+    --border:        ???; /* subtle dark border */
+    --shadow:        0 2px 8px rgba(0,0,0,0.3);
+  }
+}
+
+/* ─── Reset ──────────────────────────────────── */
+*,*::before,*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(???); /* light green to white */
+  color: var(--text-primary);
+  min-height: 100vh;
+  /* leave space for fixed bottom nav */
+  padding-bottom: 80px;
+}
+
+.hidden { display: none !important; }

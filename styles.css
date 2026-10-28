@@ -1,56 +1,120 @@
-/* your job — fill in the ??? */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* ─── Google Fonts ───────────────────────────── */
-/* use Inter or Plus Jakarta Sans — clean medical feel */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 /* ─── Variables ──────────────────────────────── */
 :root {
-  /* Light mode — gradient light green to white */
-  --bg-primary:    #ffffff; /* white */
-  --bg-secondary:  #d1faba; /* very light green */
-  --bg-card:       #ffffff; /* white card */
-  --accent-green:  #10b981; /* main green — buttons, highlights */
-  --accent-urgent: #ef4444; /* orange/red — upcoming reminder */
-  --text-primary:  #0f172a; /* dark text */
-  --text-secondary:#475569; /* grey text */
-  --text-muted:    #94a3b8; /* very light grey */
-  --border:        #e2e8f0; /* subtle border */
-  --shadow:        0 2px 8px rgba(0,0,0,0.08);
+  /* Colors — Light mode */
+  --bg-primary:     #f2f6ed;
+  --bg-secondary:   #d1faba;
+  --bg-card:        #ffffff;
+  --accent-green:   #10b981;
+  --accent-taken:   #10b981;
+  --accent-urgent:  #f97316;
+  --accent-overdue: #ef4444;
+  --accent-gout:    #8b5cf6;
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+  --border:         #e2e8f0;
+  --shadow:         0 2px 8px rgba(0,0,0,0.08);
 
   /* Font */
-  --font-family: 'Plus Jakarta Sans', sans-serif;
+  --font-family:    'Plus Jakarta Sans', sans-serif;
   --font-size-base: 16px;
 }
 
-/* Dark mode — gradient dark green to black */
-/* @media (prefers-color-scheme: dark) {
-  :root { */
-    /* --bg-primary:    #212223; near black */
-    /* --bg-secondary:  #255322; dark green */
-    /* --bg-card:       #0f141c; dark card */
-    /* --text-primary:  #ffffff; white */
-    /* --text-secondary:#94a3b8; light grey */
-    /* --border:        #334155; subtle dark border */
-    /* --shadow:        0 2px 8px rgba(0,0,0,0.3); */
-  /* }
-} */
+/* Dark mode — manual toggle */
+body.dark-mode {
+  --bg-primary:     #0f141c;
+  --bg-secondary:   #212223;
+  --bg-card:        #1a2332;
+  --accent-green:   #34d399;
+  --accent-taken:   #34d399;
+  --text-primary:   #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+  --border:         #334155;
+  --shadow:         0 2px 8px rgba(0,0,0,0.3);
+}
 
 /* ─── Reset ──────────────────────────────────── */
-*,*::before,*::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html { font-size: 16px; }
+html {
+  font-size: 16px;
+}
 
 body {
   font-family: var(--font-family);
-  background:  var(--bg-secondary);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  /* leave space for fixed bottom nav */
   padding-bottom: 80px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
+
+header {
+  position: sticky;  /* stays at top when scrolling */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin:1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(90deg, var(--bg-secondary)0%, var(--bg-primary)100%);
+  border-radius:  0.5rem;
+  gap: 1rem;
+}
+
+.app-title h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.app-title p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.modal-content{
+    width: 340px;
+    background-color: var(--bg-card);
+    padding: 1rem;
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-close{
+    background: none;
+    background-color: var(--bg-primary);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}

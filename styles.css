@@ -2,39 +2,38 @@
 
 /* ─── Google Fonts ───────────────────────────── */
 /* use Inter or Plus Jakarta Sans — clean medical feel */
-@import url('???');
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 /* ─── Variables ──────────────────────────────── */
 :root {
   /* Light mode — gradient light green to white */
-  --bg-primary:    ???; /* white */
-  --bg-secondary:  ???; /* very light green */
-  --bg-card:       ???; /* white card */
-  --accent-green:  ???; /* main green — buttons, highlights */
-  --accent-urgent: ???; /* orange/red — upcoming reminder */
-  --text-primary:  ???; /* dark text */
-  --text-secondary:???; /* grey text */
-  --text-muted:    ???; /* very light grey */
-  --border:        ???; /* subtle border */
+  --bg-primary:    #ffffff; /* white */
+  --bg-secondary:  #d1faba; /* very light green */
+  --bg-card:       #ffffff; /* white card */
+  --accent-green:  #10b981; /* main green — buttons, highlights */
+  --accent-urgent: #ef4444; /* orange/red — upcoming reminder */
+  --text-primary:  #0f172a; /* dark text */
+  --text-secondary:#475569; /* grey text */
+  --text-muted:    #94a3b8; /* very light grey */
+  --border:        #e2e8f0; /* subtle border */
   --shadow:        0 2px 8px rgba(0,0,0,0.08);
 
   /* Font */
-  --font-family: '???', sans-serif;
+  --font-family: 'Plus Jakarta Sans', sans-serif;
   --font-size-base: 16px;
 }
 
 /* Dark mode — gradient dark green to black */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary:    ???; /* near black */
-    --bg-secondary:  ???; /* dark green */
-    --bg-card:       ???; /* dark card */
-    --text-primary:  ???; /* white */
-    --text-secondary:???; /* light grey */
-    --border:        ???; /* subtle dark border */
-    --shadow:        0 2px 8px rgba(0,0,0,0.3);
-  }
-}
+/* @media (prefers-color-scheme: dark) {
+  :root { */
+    /* --bg-primary:    #212223; near black */
+    /* --bg-secondary:  #255322; dark green */
+    /* --bg-card:       #0f141c; dark card */
+    /* --text-primary:  #ffffff; white */
+    /* --text-secondary:#94a3b8; light grey */
+    /* --border:        #334155; subtle dark border */
+    /* --shadow:        0 2px 8px rgba(0,0,0,0.3); */
+  /* }
+} */
 
 /* ─── Reset ──────────────────────────────────── */
 *,*::before,*::after {
@@ -47,7 +46,7 @@ html { font-size: 16px; }
 
 body {
   font-family: var(--font-family);
-  background: linear-gradient(???); /* light green to white */
+  background:  var(--bg-secondary);
   color: var(--text-primary);
   min-height: 100vh;
   /* leave space for fixed bottom nav */

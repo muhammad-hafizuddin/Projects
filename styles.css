@@ -182,3 +182,114 @@ header {
 .btn-close:hover {
   background-color: var(--bg-secondary);
 }
+
+/* ─── Form Container & Layout ────────────────── */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+/* Labels */
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Input Fields (Text, Time, Number) ──────── */
+.form-group input[type="text"],
+.form-group input[type="time"],
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus State with Emerald Glow */
+.form-group input:focus {
+  border-color: var(--accent-green);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+/* Time inputs spacing */
+.time-input {
+  margin-bottom: 0.5rem;
+}
+
+/* Add Another Time Button */
+.btn-add-time {
+  background: transparent;
+  color: var(--accent-green);
+  border: 1px dashed var(--accent-green);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add-time:hover {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+/* ─── Toggle Group Layout ────────────────────── */
+.toggle-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-group label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+/* ─── Form Actions & Buttons ─────────────────── */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-cancel {
+  background-color: #f1f5f9;
+  color: var(--text-secondary);
+}
+
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-save {
+  background-color: var(--accent-green);
+  color: #ffffff;
+}
+
+.btn-save:hover {
+  opacity: 0.9;
+}

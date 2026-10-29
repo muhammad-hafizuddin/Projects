@@ -14,6 +14,7 @@ closeModalBtn.addEventListener("click", () => {
 });
 
 // also close when clicking the dark overlay behind the modal
+
 medModal.addEventListener('click', (e) => {
   if (e.target === medModal) {        // clicked the overlay not the content
     medModal.classList.add('hidden');

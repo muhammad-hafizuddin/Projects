@@ -2,6 +2,22 @@ const addMedicationBtn = document.getElementById("addMedBtn");
 const medModal = document.getElementById("medModal");
 const closeModalBtn = document.getElementById("closeModal");
 
+// FORM SECTION
+const form = document.getElementById("med-form");
+const medName = document.getElementById("med-name");
+const timeInput = document.getElementById("time-input");
+const addTimeBtn = document.getElementById("add-time-btn");
+const medNotes = document.getElementById("med-notes");
+const medQuantity = document.getElementById("med-quantity");
+const medGout = document.getElementById("med-gout-only");
+const cancelModalBtn = document.getElementById("cancel-modal");
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+  console.log(e);
+});
 // when modal opens — prevent background from scrolling
  addMedicationBtn.addEventListener("click", () => {
    medModal.classList.remove("hidden");

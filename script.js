@@ -11,13 +11,26 @@ const medNotes = document.getElementById("med-notes");
 const medQuantity = document.getElementById("med-quantity");
 const medGout = document.getElementById("med-gout-only");
 const cancelModalBtn = document.getElementById("cancel-modal");
+const autocompleteList = document.getElementById("auto-complete-list");
 
+// STEP 1: Fetching data from the RxNorm API for medication suggestions
+async function fetchMedicationSuggestions(query) {
+  const url = `https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=${query}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+// This sends a request to the server
+fetchMedicationSuggestions("aspirin");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
   console.log(e);
 });
+
+
 // when modal opens — prevent background from scrolling
  addMedicationBtn.addEventListener("click", () => {
    medModal.classList.remove("hidden");

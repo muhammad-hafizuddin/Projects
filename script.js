@@ -16,7 +16,7 @@ const autocompleteList = document.getElementById("auto-complete-list");
 const fetchMedicationSuggestions = async (query) => {
   try {
     const response = await fetch(
-      `https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=${encodeURIComponent(query)}&maxEntries=???`
+      `https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=${encodeURIComponent(query)}&maxEntries=8`
     );
 
     // fetch doesn't throw on 404/500, so check it yourself
@@ -42,14 +42,7 @@ const fetchMedicationSuggestions = async (query) => {
 };
 
 // This sends a request to the server
-fetchMedicationSuggestions("aspirin");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-  console.log(e);
-});
-
+fetchMedicationSuggestions("lipitor").then(console.log);
 
 // when modal opens — prevent background from scrolling
  addMedicationBtn.addEventListener("click", () => {

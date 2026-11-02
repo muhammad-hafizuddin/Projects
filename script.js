@@ -13,13 +13,33 @@ const medGout = document.getElementById("med-gout-only");
 const cancelModalBtn = document.getElementById("cancel-modal");
 const autocompleteList = document.getElementById("auto-complete-list");
 
-// STEP 1: Fetching data from the RxNorm API for medication suggestions
-async function fetchMedicationSuggestions(query) {
-  const url = `https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=${query}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-}
+const fetchMedicationSuggestions = async (query) => {
+  try {
+    const response = await fetch(
+      `https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=${encodeURIComponent(query)}&maxEntries=???`
+    );
+
+    // fetch doesn't throw on 404/500, so check it yourself
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const data = await response.json();
+
+    // candidate may be missing → fall back to an empty array
+    const candidates = data.approximateGroup?.candidate ?? [];
+
+    // keep only candidates that have a name, then take just the name
+    const names = candidates
+      .filter(c => c.name)
+      .map(c => c.name);
+
+    // Set removes duplicates, spread turns it back into an array
+    return [...new Set(names)];
+
+  } catch (error) {
+    console.error('Medication lookup failed:', error);
+    return []; // fail quietly: the user can still type manually
+  }
+};
 
 // This sends a request to the server
 fetchMedicationSuggestions("aspirin");

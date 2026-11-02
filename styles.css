@@ -186,6 +186,7 @@ header {
 /* ─── Form Container & Layout ────────────────── */
 .form-group {
   margin-bottom: 1.25rem;
+  position: relative; /* For positioning the autocomplete dropdown */
 }
 
 /* Labels */

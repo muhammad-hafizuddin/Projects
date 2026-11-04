@@ -13,6 +13,11 @@ const medGout = document.getElementById("med-gout-only");
 const cancelModalBtn = document.getElementById("cancel-modal");
 const autocompleteList = document.getElementById("auto-complete-list");
 
+// RENDERAUTOCOMPLETE SECTION
+const medNameInput = document.getElementById('med-name');
+const autoList     = document.getElementById('auto-complete-list');
+
+// Function to fetch medication suggestions from the API
 const fetchMedicationSuggestions = async (query) => {
   try {
     const response = await fetch(
@@ -44,9 +49,8 @@ const fetchMedicationSuggestions = async (query) => {
 // This sends a request to the server
 fetchMedicationSuggestions("lipitor").then(console.log);
 
-const medNameInput = document.getElementById('med-name');
-const autoList     = document.getElementById('auto-complete-list');
 
+// Render the suggestions in the dropdown
 const renderSuggestions = (names) => {
   autoList.innerHTML = '';              // clear old suggestions
 

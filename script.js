@@ -44,6 +44,51 @@ const fetchMedicationSuggestions = async (query) => {
 // This sends a request to the server
 fetchMedicationSuggestions("lipitor").then(console.log);
 
+const medNameInput = document.getElementById('med-name');
+const autoList     = document.getElementById('auto-complete-list');
+
+const renderSuggestions = (names) => {
+  autoList.innerHTML = '';              // clear old suggestions
+
+  if (names.length === 0) {
+    autoList.classList.add('hidden');   // nothing to show
+    return;
+  }
+
+  names.forEach(name => {
+    const item = document.createElement('div');
+    item.className   = 'auto-complete-dropdown'; // class from your CSS
+    item.textContent = name;            // textContent, not innerHTML
+
+    item.addEventListener('click', () => {
+      medNameInput.value = name;         // put the chosen name in the input
+      autoList.classList.add('hidden');
+    });
+
+    autoList.appendChild(item);
+  });
+
+  autoList.classList.remove('hidden');
+};
+
+let debounceTimer;
+
+medNameInput.addEventListener('input', () => {
+  clearTimeout(debounceTimer);          // cancel the previous timer
+
+  const query = medNameInput.value.trim();
+
+  if (query.length < ???) {             // too short to search
+    autoList.classList.add('hidden');
+    return;
+  }
+
+  debounceTimer = setTimeout(async () => {
+    const names = await fetchMedicationSuggestions(query);
+    renderSuggestions(names);
+  }, ???);                              // milliseconds to wait
+});
+
 // when modal opens — prevent background from scrolling
  addMedicationBtn.addEventListener("click", () => {
    medModal.classList.remove("hidden");

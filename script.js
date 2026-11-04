@@ -57,7 +57,7 @@ const renderSuggestions = (names) => {
 
   names.forEach(name => {
     const item = document.createElement('div');
-    item.className   = 'auto-complete-dropdown'; // class from your CSS
+    item.className   = 'auto-complete-item'; // class from your CSS
     item.textContent = name;            // textContent, not innerHTML
 
     item.addEventListener('click', () => {
@@ -78,7 +78,7 @@ medNameInput.addEventListener('input', () => {
 
   const query = medNameInput.value.trim();
 
-  if (query.length < ???) {             // too short to search
+  if (query.length < 2 ) {             // too short to search
     autoList.classList.add('hidden');
     return;
   }
@@ -86,7 +86,7 @@ medNameInput.addEventListener('input', () => {
   debounceTimer = setTimeout(async () => {
     const names = await fetchMedicationSuggestions(query);
     renderSuggestions(names);
-  }, ???);                              // milliseconds to wait
+  }, 300);                              // milliseconds to wait
 });
 
 // when modal opens — prevent background from scrolling

@@ -215,7 +215,7 @@ header {
 }
 
 /* ─── Autocomplete Dropdown Styles ───────────── */
-.autocomplete-dropdown {
+.auto-complete-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
@@ -230,7 +230,7 @@ header {
   margin-top: 4px;
 }
 
-.autocomplete-item {
+.auto-complete-item {
   padding: 0.65rem 1rem;
   font-size: 0.9rem;
   color: var(--text-primary);
@@ -239,11 +239,11 @@ header {
   transition: background-color 0.15s ease;
 }
 
-.autocomplete-item:last-child {
+.auto-complete-item:last-child {
   border-bottom: none;
 }
 
-.autocomplete-item:hover {
+.auto-complete-item:hover {
   background-color: var(--bg-secondary);
 }
 

@@ -41,17 +41,28 @@ const defaultMedications = [
     notes: 'Gout — when necessary', quantity: 14 },
 ];
 
-const loadMedications = () => {
-  const saved = localStorage.getItem(STORAGE_KEY);        // read using the key
 
-  if (!saved) return defaultMedications;          // first visit: nothing saved yet
+let goutMode = false;
+
+// '14:00' → '2:00 PM'
+const formatTime = (time24) => {
+  const [hours, minutes] = time24.split(':').map(Number);
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const hour12 = hours % 12 || 12;
+  return `${hour12}:${String(minutes).padStart(2, '0')} ${period}`;
+};
+
+const loadMedications = () => {
+  const saved = localStorage.getItem(STORAGE_KEY);   // read using the key
+
+  if (!saved) return defaultMedications;             // first visit: nothing saved yet
 
   try {
-    return JSON.parse(saved);                       // string → array
+    return JSON.parse(saved);                        // string → array
   } catch (error) {
     console.error('Saved data is corrupted:', error);
     return defaultMedications;
-  }
+  } 
 };
 
 const saveMedications = () => {

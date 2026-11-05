@@ -41,6 +41,27 @@ const defaultMedications = [
     notes: 'Gout — when necessary', quantity: 14 },
 ];
 
+const loadMedications = () => {
+  const saved = localStorage.getItem(STORAGE_KEY);        // read using the key
+
+  if (!saved) return defaultMedications;          // first visit: nothing saved yet
+
+  try {
+    return JSON.parse(saved);                       // string → array
+  } catch (error) {
+    console.error('Saved data is corrupted:', error);
+    return defaultMedications;
+  }
+};
+
+const saveMedications = () => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(medications));   // array → string
+};
+
+let medications = loadMedications();
+
+console.log('Loaded medications:', medications);
+
 // Function to fetch medication suggestions from the API
 const fetchMedicationSuggestions = async (query) => {
   try {

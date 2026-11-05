@@ -17,6 +17,30 @@ const autocompleteList = document.getElementById("auto-complete-list");
 const medNameInput = document.getElementById('med-name');
 const autoList     = document.getElementById('auto-complete-list');
 
+// STORAGE SECTION
+const STORAGE_KEY = 'caretrack-medications';
+// Load medications from localStorage or use default if none exist
+const defaultMedications = [
+  { id: 'med-1', name: 'APO-CLOPIDOGREL 75mg', dose: '1 tablet',
+    times: ['06:30'], goutOnly: false, active: true,
+    notes: 'Blood thinner — stroke prevention', quantity: 30 },
+  { id: 'med-2', name: 'LIPITOR 40mg (Atorvastatin)', dose: '1 tablet',
+    times: ['20:15'], goutOnly: false, active: true,
+    notes: 'Cholesterol', quantity: 30 },
+  { id: 'med-3', name: 'TRIPLIXAM 10/2.5/10mg', dose: '1 tablet',
+    times: ['09:30'], goutOnly: false, active: true,
+    notes: 'Blood pressure', quantity: 30 },
+  { id: 'med-4', name: 'ETORICOXIB 90mg (Arcoxia)', dose: '1 tablet',
+    times: ['14:00', '20:15'], goutOnly: true, active: true,
+    notes: 'Gout pain relief — when necessary', quantity: 14 },
+  { id: 'med-5', name: 'ALLOPURINOL 300mg (Zyloric)', dose: '1 tablet',
+    times: ['09:30'], goutOnly: false, active: true,
+    notes: 'Gout prevention', quantity: 30 },
+  { id: 'med-6', name: 'TOLCHICINE 0.6mg (Colchicine)', dose: '1 tablet',
+    times: ['14:00', '20:15'], goutOnly: true, active: true,
+    notes: 'Gout — when necessary', quantity: 14 },
+];
+
 // Function to fetch medication suggestions from the API
 const fetchMedicationSuggestions = async (query) => {
   try {
@@ -89,8 +113,10 @@ medNameInput.addEventListener('input', () => {
 
   debounceTimer = setTimeout(async () => {
     const names = await fetchMedicationSuggestions(query);
+    if (medNameInput.value.trim() !== query) return; // user kept typing, ignore this result
     renderSuggestions(names);
-  }, 300);                              // milliseconds to wait
+  }, 300);                         // milliseconds to wait
+
 });
 
 // when modal opens — prevent background from scrolling

@@ -52,6 +52,12 @@ const formatTime = (time24) => {
   return `${hour12}:${String(minutes).padStart(2, '0')} ${period}`;
 };
 
+// stops names from being interpreted as HTML
+const escapeHtml = (text) =>
+  String(text).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+
 const loadMedications = () => {
   const saved = localStorage.getItem(STORAGE_KEY);   // read using the key
 
